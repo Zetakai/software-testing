@@ -39,8 +39,6 @@ selection in checkout.
 | `SauceDemo_Test_Report.pdf` | PDF render of the deck |
 | `gen_ppt.py` | Generator for the presentation deck (python-pptx) |
 | `reformat_xlsx.py` | Reformats the workbooks to the PDF field specs (openpyxl) |
-| `run_tests.py` | Selenium harness — live verification of key scenarios |
-| `live_results.json` | Output of the latest live test run |
 
 ### Document formats (per the studi-kasus PDF)
 
@@ -59,18 +57,14 @@ python gen_ppt.py
 
 # Reformat the workbooks to the PDF spec
 python reformat_xlsx.py
-
-# Run the live Selenium verification (needs Chrome + selenium)
-python run_tests.py
 ```
 
-Dependencies: `python-pptx`, `openpyxl`, `selenium` (Chrome required for `run_tests.py`).
+Dependencies: `python-pptx`, `openpyxl`.
 
 ---
 
 ## Notes
 
-- The live Selenium run (`run_tests.py`) independently verified core flows on
-  `saucedemo.com`; results are in `live_results.json`.
+- All testing was performed **manually** (black-box) against `saucedemo.com`.
 - SauceDemo intentionally ships buggy accounts (`problem_user`, `error_user`,
   etc.) as testing practice material.
