@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# LibreOffice / Office lock & temp files
+.~lock.*#
+~$*
+
+# Claude Code local config
+.claude/
+
+# OS cruft
+.DS_Store
+Thumbs.db

@@ -1,0 +1,74 @@
+[
+  {
+    "tc": "TC-01",
+    "desc": "Login valid standard_user",
+    "status": "PASS",
+    "actual": "url=https://www.saucedemo.com/inventory.html"
+  },
+  {
+    "tc": "TC-02",
+    "desc": "Login invalid",
+    "status": "PASS",
+    "actual": "Epic sadface: Username and password do not match any user in this service"
+  },
+  {
+    "tc": "TC-03",
+    "desc": "Login field kosong",
+    "status": "PASS",
+    "actual": "Epic sadface: Username is required"
+  },
+  {
+    "tc": "TC-04",
+    "desc": "Login user terkunci",
+    "status": "PASS",
+    "actual": "Epic sadface: Sorry, this user has been locked out."
+  },
+  {
+    "tc": "TC-05",
+    "desc": "Add to cart badge",
+    "status": "PASS",
+    "actual": "badge=1"
+  },
+  {
+    "tc": "TC-06",
+    "desc": "Sort price low-high (standard)",
+    "status": "PASS",
+    "actual": "prices=[7.99, 9.99, 15.99, 15.99, 29.99, 49.99]"
+  },
+  {
+    "tc": "TC-07",
+    "desc": "Checkout end-to-end (standard)",
+    "status": "PASS",
+    "actual": "Thank you for your order!"
+  },
+  {
+    "tc": "TC-10",
+    "desc": "Logout",
+    "status": "PASS",
+    "actual": "url=https://www.saucedemo.com/"
+  },
+  {
+    "tc": "TC-08",
+    "desc": "problem_user images unique",
+    "status": "FAIL",
+    "actual": "12 imgs, 2 unique -> all identical (DEF-01)"
+  },
+  {
+    "tc": "TC-09",
+    "desc": "error_user checkout last name",
+    "status": "FAIL",
+    "actual": "lastname='', proceeded=False, url=https://www.saucedemo.com/checkout-step-one.html (DEF-02)"
+  },
+  {
+    "tc": "TC-06b",
+    "desc": "problem_user sorting",
+    "status": "FAIL",
+    "actual": "order unchanged/wrong (DEF-03). after[0]=Sauce Labs Backpack"
+  },
+  {
+    "tc": "TC-05b",
+    "desc": "problem_user remove",
+    "status": "FAIL",
+    "actual": "badge stuck at 1 after Remove (DEF-04)"
+  }
+]
