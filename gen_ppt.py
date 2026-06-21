@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """SauceDemo case-study deck built from the real team artifacts:
    SauceDemo (Test Cases).xlsx  -> 99 cases / 82 PASS / 17 FAIL across 5 modules
-   SauceDemo (Bug Report).xlsx  -> 17 open bugs (13 low / 4 medium severity)."""
+   SauceDemo (Bug Report).xlsx  -> 12 open bugs (8 low / 4 medium severity)."""
 from pptx import Presentation
 from pptx.util import Inches, Pt
 from pptx.dml.color import RGBColor
@@ -131,7 +131,7 @@ text(s, Inches(0.85), Inches(1.9), Inches(11.6), Inches(2.0),
      line_spacing=1.05)
 text(s, Inches(0.9), Inches(4.75), Inches(11.5), Inches(1.6),
      [[("Target Uji:  https://www.saucedemo.com/", 15, False, WHITE)],
-      [("99 Test Case  •  82 PASS / 17 FAIL  •  17 Bug Dilaporkan", 14, True, GREEN)],
+      [("99 Test Case  •  82 PASS / 17 FAIL  •  12 Bug Dilaporkan", 14, True, GREEN)],
       [("Sumber data: SauceDemo (Test Cases).xlsx  &  SauceDemo (Bug Report).xlsx", 12, False, RGBColor(0xB8,0xC4,0xD6))],
       [("Tim: Zaki & Galih", 12, False, RGBColor(0xB8,0xC4,0xD6))]],
      line_spacing=1.25, space_after=3)
@@ -143,7 +143,7 @@ items = [
     ("02", "Scope & Modul Uji", "5 modul: Login, Home, Cart, Checkout, Footer"),
     ("03", "Test Case Summary", "99 case — rekap per modul"),
     ("04", "Test Execution Result", "Pass rate & status per modul"),
-    ("05", "Bug Report", "17 bug — severity & priority"),
+    ("05", "Bug Report", "12 bug — severity & priority"),
     ("06", "Bug Kritis", "3 bug priority High"),
     ("07", "Analisis Kualitas", "Dampak, risiko, retesting"),
     ("08", "Release Recommendation", "GO / Conditional / NO-GO"),
@@ -213,7 +213,7 @@ s = slide(); header(s, "Test Case Summary per Modul", "99 test case • SauceDem
 rows = [["Modul", "Total", "PASS", "FAIL", "Test Case yang FAIL"]]
 for nm, tot, p, f, ids in MODULES:
     rows.append([nm, str(tot), str(p), str(f), ids])
-rows.append(["TOTAL", str(TOTAL), str(PASS), str(FAIL), "17 bug dilaporkan"])
+rows.append(["TOTAL", str(TOTAL), str(PASS), str(FAIL), "12 bug dilaporkan"])
 table(s, Inches(0.5), Inches(1.45), Inches(12.4), [0.14, 0.09, 0.09, 0.09, 0.59], rows,
       fontsize=11.5, row_h=Inches(0.55))
 text(s, Inches(0.5), Inches(5.6), Inches(12), Inches(0.5),
@@ -254,7 +254,7 @@ footer(s, 6)
 # ============================================================ 7 EXECUTION RESULT
 s = slide(); header(s, "Test Execution Result", "Metrik & status per modul")
 metrics = [(str(TOTAL), "Total Case", NAVY), (str(PASS), "PASS", PASSG),
-           (str(FAIL), "FAIL", RED), ("82.8%", "Pass Rate", AMBER), ("17", "Bug", RED)]
+           (str(FAIL), "FAIL", RED), ("82.8%", "Pass Rate", AMBER), ("12", "Bug", RED)]
 mw = Inches(2.35); gap = Inches(0.15); x = Inches(0.55)
 for val, lab, c in metrics:
     rect(s, x, Inches(1.4), mw, Inches(1.3), c)
@@ -278,9 +278,9 @@ for i, (nm, tot, p, f, ids) in enumerate(MODULES):
 footer(s, 7)
 
 # ============================================================ 7 BUG OVERVIEW
-s = slide(); header(s, "Bug Report — Ringkasan", "17 bug • SauceDemo (Bug Report).xlsx")
+s = slide(); header(s, "Bug Report — Ringkasan", "12 bug • SauceDemo (Bug Report).xlsx")
 # metric cards
-bm = [("17", "Total Bug", NAVY), ("17", "Opened", AMBER), ("4", "Severity Medium", AMBER), ("3", "Priority High", RED)]
+bm = [("12", "Total Bug", NAVY), ("12", "Opened", AMBER), ("4", "Severity Medium", AMBER), ("3", "Priority High", RED)]
 x = Inches(0.55); mw = Inches(2.95)
 for val, lab, c in bm:
     rect(s, x, Inches(1.4), mw, Inches(1.25), c)
@@ -289,20 +289,20 @@ for val, lab, c in bm:
     x += mw + Inches(0.2)
 # severity + priority distribution tables
 text(s, Inches(0.55), Inches(3.0), Inches(6), Inches(0.4), [[("Distribusi Severity", 14, True, NAVY)]])
-sev = [["Severity", "Jumlah"], ["High", "0"], ["Medium", "4"], ["Low", "13"], ["Critical", "0"]]
+sev = [["Severity", "Jumlah"], ["High", "0"], ["Medium", "4"], ["Low", "8"], ["Critical", "0"]]
 table(s, Inches(0.55), Inches(3.45), Inches(5.9), [0.6, 0.4], sev, fontsize=12, row_h=Inches(0.4))
 text(s, Inches(6.95), Inches(3.0), Inches(6), Inches(0.4), [[("Distribusi Priority", 14, True, NAVY)]])
-pri = [["Priority", "Jumlah"], ["High", "3"], ["Medium", "10"], ["Low", "4"]]
+pri = [["Priority", "Jumlah"], ["High", "3"], ["Medium", "5"], ["Low", "4"]]
 table(s, Inches(6.95), Inches(3.45), Inches(5.9), [0.6, 0.4], pri, fontsize=12, row_h=Inches(0.4))
 text(s, Inches(0.55), Inches(6.2), Inches(12.2), Inches(0.7),
      [[("Catatan: ", 12, True, NAVY),
-       ("Tidak ada bug Critical/High-severity. Semua 17 bug masih ber-status Opened. "
+       ("Tidak ada bug Critical/High-severity. Semua 12 bug masih ber-status Opened. "
         "3 bug Priority-High menyangkut alur transaksi inti (lihat slide berikut).", 12, False, DARK)]],
      line_spacing=1.15)
 footer(s, 8)
 
 # ============================================================ 8 BUG LIST
-s = slide(); header(s, "Daftar Bug (17)", "Bug ID • Severity • Priority • Judul")
+s = slide(); header(s, "Daftar Bug (12)", "Bug ID • Severity • Priority • Judul")
 bugs = [
     ("1", "Low", "Low", "No message when cart is empty"),
     ("2", "Low", "High", "User cannot add an item more than 1"),
@@ -315,7 +315,7 @@ bugs = [
     ("9", "Medium", "High", "Delivery address field missing in checkout"),
     ("10", "Medium", "High", "Payment method selection missing"),
     ("11", "Low", "Medium", "Checkout allowed with empty cart"),
-    ("12-18", "Low", "Medium", "Account not locked after failed logins (6 roles)"),
+    ("12", "Low", "Medium", "Account not locked after failed logins (all roles)"),
 ]
 rows = [["ID", "Severity", "Priority", "Judul Bug"]]
 rows += [[a, b, c, d] for (a, b, c, d) in bugs]
@@ -388,7 +388,7 @@ text(s, Inches(0.9), Inches(2.75), Inches(11.5), Inches(1.2),
 text(s, Inches(0.9), Inches(4.3), Inches(11.6), Inches(2.6),
      [[("Pass rate 82.8% & tanpa bug Critical — layak rilis SETELAH syarat berikut:", 15, True, WHITE)],
       [("1.  Perbaiki 3 bug Priority-High: #2 (qty), #9 (alamat), #10 (pembayaran).", 14, False, WHITE)],
-      [("2.  Perbaiki celah keamanan account-lockout (Bug #12-18).", 14, False, WHITE)],
+      [("2.  Perbaiki celah keamanan account-lockout (Bug #12).", 14, False, WHITE)],
       [("3.  Bug severity Low lainnya boleh fast-follow patch.", 14, False, WHITE)],
       [("4.  RETEST seluruh 17 case FAIL sebelum go-live.", 14, False, WHITE)]],
      line_spacing=1.25, space_after=6)
@@ -402,7 +402,7 @@ text(s, Inches(0.9), Inches(2.5), Inches(11.5), Inches(1.0), [[("Terima Kasih", 
 text(s, Inches(0.9), Inches(3.6), Inches(11.5), Inches(0.6),
      [[("Studi Kasus Pengujian Perangkat Lunak — SauceDemo", 16, False, GREEN)]])
 text(s, Inches(0.9), Inches(4.2), Inches(11.5), Inches(0.6),
-     [[("99 Test Case  •  82 PASS / 17 FAIL  •  17 Bug  •  Keputusan: Conditional GO", 13, False, RGBColor(0xB8,0xC4,0xD6))]])
+     [[("99 Test Case  •  82 PASS / 17 FAIL  •  12 Bug  •  Keputusan: Conditional GO", 13, False, RGBColor(0xB8,0xC4,0xD6))]])
 text(s, Inches(0.9), Inches(4.75), Inches(11.5), Inches(0.5),
      [[("Tim: Zaki & Galih", 12, False, RGBColor(0xB8,0xC4,0xD6))]])
 

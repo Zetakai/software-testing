@@ -19,8 +19,11 @@ Footer — covering positive, negative, edge-case, and responsiveness scenarios.
 | Passed | **82** |
 | Failed | **17** |
 | Pass rate | **82.8%** |
-| Bugs reported | **17** (0 critical / 0 high severity, 4 medium, 13 low) |
+| Bugs reported | **12** (0 critical / 0 high severity, 4 medium, 8 low) |
 | Release decision | **Conditional GO** |
+
+The 17 failed test cases map to **12 unique defects** — the 6 account-lockout
+failures (one per user role) are a single defect.
 
 The 3 highest-priority bugs concern the core transaction flow: cannot add an item
 more than once, missing delivery-address field, and missing payment-method
