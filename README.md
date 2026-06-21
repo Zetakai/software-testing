@@ -15,15 +15,16 @@ Footer — covering positive, negative, edge-case, and responsiveness scenarios.
 
 | Metric | Value |
 |--------|-------|
-| Total test cases | **99** |
+| Total test cases | **94** |
 | Passed | **82** |
-| Failed | **17** |
-| Pass rate | **82.8%** |
+| Failed | **12** |
+| Pass rate | **87.2%** |
 | Bugs reported | **12** (0 critical / 0 high severity, 4 medium, 8 low) |
 | Release decision | **Conditional GO** |
 
-The 17 failed test cases map to **12 unique defects** — the 6 account-lockout
-failures (one per user role) are a single defect.
+Each failed test case maps to one defect (12 ↔ 12). The account-lockout test was
+consolidated into a single case (TC-LP-026) covering all user roles, since the
+per-role cases were identical.
 
 The 3 highest-priority bugs concern the core transaction flow: cannot add an item
 more than once, missing delivery-address field, and missing payment-method

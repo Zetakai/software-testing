@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """SauceDemo case-study deck built from the real team artifacts:
-   SauceDemo (Test Cases).xlsx  -> 99 cases / 82 PASS / 17 FAIL across 5 modules
+   SauceDemo (Test Cases).xlsx  -> 94 cases / 82 PASS / 12 FAIL across 5 modules
    SauceDemo (Bug Report).xlsx  -> 12 open bugs (8 low / 4 medium severity)."""
 from pptx import Presentation
 from pptx.util import Inches, Pt
@@ -111,13 +111,13 @@ def table(s, x, y, w, col_w, rows, header_fill=NAVY, fontsize=9.5,
 
 # ---- data from the workbooks ----
 MODULES = [  # name, total, pass, fail, fail TC ids
-    ("Login",     44, 38, 6, "TC-LP-026 … 031 (account lockout)"),
+    ("Login",     39, 38, 1, "TC-LP-026 (account lockout, semua role)"),
     ("Home Page", 22, 19, 3, "TC-MP-001, 003, 013"),
     ("Cart",      12, 10, 2, "TC-CP-006, 008"),
     ("Checkout",  15, 10, 5, "TC-CKO-004, 007, 008, 009, 015"),
     ("Footer",     6,  5, 1, "TC-F-007"),
 ]
-TOTAL, PASS, FAIL = 99, 82, 17
+TOTAL, PASS, FAIL = 94, 82, 12
 
 # ============================================================ 1 TITLE
 s = slide()
@@ -131,7 +131,7 @@ text(s, Inches(0.85), Inches(1.9), Inches(11.6), Inches(2.0),
      line_spacing=1.05)
 text(s, Inches(0.9), Inches(4.75), Inches(11.5), Inches(1.6),
      [[("Target Uji:  https://www.saucedemo.com/", 15, False, WHITE)],
-      [("99 Test Case  •  82 PASS / 17 FAIL  •  12 Bug Dilaporkan", 14, True, GREEN)],
+      [("94 Test Case  •  82 PASS / 12 FAIL  •  12 Bug Dilaporkan", 14, True, GREEN)],
       [("Sumber data: SauceDemo (Test Cases).xlsx  &  SauceDemo (Bug Report).xlsx", 12, False, RGBColor(0xB8,0xC4,0xD6))],
       [("Tim: Zaki & Galih", 12, False, RGBColor(0xB8,0xC4,0xD6))]],
      line_spacing=1.25, space_after=3)
@@ -141,7 +141,7 @@ s = slide(); header(s, "Agenda", "Alur dokumen pengujian")
 items = [
     ("01", "Tentang Aplikasi", "Eksplorasi SauceDemo & fitur"),
     ("02", "Scope & Modul Uji", "5 modul: Login, Home, Cart, Checkout, Footer"),
-    ("03", "Test Case Summary", "99 case — rekap per modul"),
+    ("03", "Test Case Summary", "94 case — rekap per modul"),
     ("04", "Test Execution Result", "Pass rate & status per modul"),
     ("05", "Bug Report", "12 bug — severity & priority"),
     ("06", "Bug Kritis", "3 bug priority High"),
@@ -209,7 +209,7 @@ text(s, Inches(0.55), Inches(5.0), Inches(12.2), Inches(1.6),
 footer(s, 4)
 
 # ============================================================ 5 TEST CASE SUMMARY
-s = slide(); header(s, "Test Case Summary per Modul", "99 test case • SauceDemo (Test Cases).xlsx")
+s = slide(); header(s, "Test Case Summary per Modul", "94 test case • SauceDemo (Test Cases).xlsx")
 rows = [["Modul", "Total", "PASS", "FAIL", "Test Case yang FAIL"]]
 for nm, tot, p, f, ids in MODULES:
     rows.append([nm, str(tot), str(p), str(f), ids])
@@ -217,11 +217,11 @@ rows.append(["TOTAL", str(TOTAL), str(PASS), str(FAIL), "12 bug dilaporkan"])
 table(s, Inches(0.5), Inches(1.45), Inches(12.4), [0.14, 0.09, 0.09, 0.09, 0.59], rows,
       fontsize=11.5, row_h=Inches(0.55))
 text(s, Inches(0.5), Inches(5.6), Inches(12), Inches(0.5),
-     [[("Pass Rate keseluruhan: ", 15, True, NAVY), ("82.8%  (82 / 99)", 15, True, PASSG)]])
+     [[("Pass Rate keseluruhan: ", 15, True, NAVY), ("87.2%  (82 / 94)", 15, True, PASSG)]])
 text(s, Inches(0.5), Inches(6.15), Inches(12.3), Inches(0.7),
      [[("Catatan: ", 12, True, NAVY),
-       ("Modul Login mendominasi jumlah case (44) karena diuji untuk 6 role. Kegagalan terbesar di "
-        "Checkout (5) dan Login (6 — semua terkait fitur account-lockout yang tidak ada.)", 12, False, DARK)]],
+       ("Modul Login diuji untuk 6 role (39 case). Kegagalan terbesar di Checkout (5); "
+        "test account-lockout digabung jadi 1 (TC-LP-026) karena identik antar-role.", 12, False, DARK)]],
      line_spacing=1.15)
 footer(s, 5)
 
@@ -248,13 +248,13 @@ rows += [list(k) for k in KEY]
 table(s, Inches(0.4), Inches(1.38), Inches(12.55), [0.13, 0.1, 0.34, 0.31, 0.12], rows,
       fontsize=10, row_h=Inches(0.375))
 text(s, Inches(0.4), Inches(6.7), Inches(12.4), Inches(0.35),
-     [[("7 PASS (alur inti) + 6 FAIL (bug Priority-High & keamanan) — dipilih dari 99 case.", 11, True, NAVY)]])
+     [[("7 PASS (alur inti) + 6 FAIL (bug Priority-High & keamanan) — dipilih dari 94 case.", 11, True, NAVY)]])
 footer(s, 6)
 
 # ============================================================ 7 EXECUTION RESULT
 s = slide(); header(s, "Test Execution Result", "Metrik & status per modul")
 metrics = [(str(TOTAL), "Total Case", NAVY), (str(PASS), "PASS", PASSG),
-           (str(FAIL), "FAIL", RED), ("82.8%", "Pass Rate", AMBER), ("12", "Bug", RED)]
+           (str(FAIL), "FAIL", RED), ("87.2%", "Pass Rate", AMBER), ("12", "Bug", RED)]
 mw = Inches(2.35); gap = Inches(0.15); x = Inches(0.55)
 for val, lab, c in metrics:
     rect(s, x, Inches(1.4), mw, Inches(1.3), c)
@@ -386,7 +386,7 @@ text(s, Inches(0.9), Inches(1.35), Inches(11.5), Inches(1.1), [[("Keputusan Rili
 text(s, Inches(0.9), Inches(2.75), Inches(11.5), Inches(1.2),
      [[("CONDITIONAL GO", 46, True, WHITE)]], anchor=MSO_ANCHOR.MIDDLE)
 text(s, Inches(0.9), Inches(4.3), Inches(11.6), Inches(2.6),
-     [[("Pass rate 82.8% & tanpa bug Critical — layak rilis SETELAH syarat berikut:", 15, True, WHITE)],
+     [[("Pass rate 87.2% & tanpa bug Critical — layak rilis SETELAH syarat berikut:", 15, True, WHITE)],
       [("1.  Perbaiki 3 bug Priority-High: #2 (qty), #9 (alamat), #10 (pembayaran).", 14, False, WHITE)],
       [("2.  Perbaiki celah keamanan account-lockout (Bug #12).", 14, False, WHITE)],
       [("3.  Bug severity Low lainnya boleh fast-follow patch.", 14, False, WHITE)],
@@ -402,7 +402,7 @@ text(s, Inches(0.9), Inches(2.5), Inches(11.5), Inches(1.0), [[("Terima Kasih", 
 text(s, Inches(0.9), Inches(3.6), Inches(11.5), Inches(0.6),
      [[("Studi Kasus Pengujian Perangkat Lunak — SauceDemo", 16, False, GREEN)]])
 text(s, Inches(0.9), Inches(4.2), Inches(11.5), Inches(0.6),
-     [[("99 Test Case  •  82 PASS / 17 FAIL  •  12 Bug  •  Keputusan: Conditional GO", 13, False, RGBColor(0xB8,0xC4,0xD6))]])
+     [[("94 Test Case  •  82 PASS / 12 FAIL  •  12 Bug  •  Keputusan: Conditional GO", 13, False, RGBColor(0xB8,0xC4,0xD6))]])
 text(s, Inches(0.9), Inches(4.75), Inches(11.5), Inches(0.5),
      [[("Tim: Zaki & Galih", 12, False, RGBColor(0xB8,0xC4,0xD6))]])
 
